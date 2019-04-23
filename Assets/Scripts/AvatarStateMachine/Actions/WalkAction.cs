@@ -39,8 +39,6 @@ public class WalkAction : AvatarAction
 
         avatarStateController.avatarNavMeshAgent.transform.rotation = destination.rotation;
 
-        avatarStateController.avatarAnimator.SetBool("sit", true);
-
         ActionFinished();
     }
 }

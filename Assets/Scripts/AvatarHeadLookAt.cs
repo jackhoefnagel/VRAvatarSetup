@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class AvatarHeadLookAt : MonoBehaviour
 {
-    public enum HeadLookatTargetType { EyeToEye, LookAway, LookAwayGround };
+    public enum HeadLookatTargetType { EyeToEye, LookAway, LookAwayGround, LookForward };
     public HeadLookatTargetType currentHeadLookatTargetType;
+
+    public AvatarAnimController avatarAnimController;
 
     public Transform headLookatTarget;
     public Transform eyeToEyeTransform;
     public Transform lookAwayTransform;
     public Transform lookAwayGroundTransform;
+    public Transform lookForwardTransform;
 
-    private Transform newTarget;
+    public Transform newTarget;
     private Vector3 previousLookatPosition;
 
     public void LookAt(HeadLookatTargetType newHeadLookatTargetType)
@@ -29,6 +32,9 @@ public class AvatarHeadLookAt : MonoBehaviour
                     break;
                 case HeadLookatTargetType.LookAwayGround:
                     newTarget = lookAwayGroundTransform;
+                    break;
+                case HeadLookatTargetType.LookForward:
+                    newTarget = lookForwardTransform;
                     break;
             }
 
@@ -54,5 +60,8 @@ public class AvatarHeadLookAt : MonoBehaviour
             animTimer += Time.deltaTime;
             yield return null;
         }
+
+        //headLookatTarget = newTarget;
+        avatarAnimController.avatarHeadLookAtTarget = newTarget;
     }
 }
