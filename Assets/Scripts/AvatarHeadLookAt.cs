@@ -4,22 +4,55 @@ using UnityEngine;
 
 public class AvatarHeadLookAt : MonoBehaviour
 {
-    public Transform head;
-    public Transform neck;
-    public float maxAngle;
-    public float headRotationSpeed;
+    public enum HeadLookatTargetType { EyeToEye, LookAway, LookAwayGround };
+    public HeadLookatTargetType currentHeadLookatTargetType;
 
-    public void LookAt(Transform target)
+    public Transform headLookatTarget;
+    public Transform eyeToEyeTransform;
+    public Transform lookAwayTransform;
+    public Transform lookAwayGroundTransform;
+
+    private Transform newTarget;
+    private Vector3 previousLookatPosition;
+
+    public void LookAt(HeadLookatTargetType newHeadLookatTargetType)
     {
-        Quaternion newHeadLookRotation = Quaternion.LookRotation(target.position - head.position);
+        if (newHeadLookatTargetType != currentHeadLookatTargetType) {
 
-        if (Quaternion.Angle(neck.rotation, newHeadLookRotation) < maxAngle)
-        {
-            head.rotation = Quaternion.Lerp(head.rotation, newHeadLookRotation, Time.deltaTime * headRotationSpeed);
+            switch (newHeadLookatTargetType)
+            {
+                case HeadLookatTargetType.EyeToEye:
+                    newTarget = eyeToEyeTransform;
+                    break;
+                case HeadLookatTargetType.LookAway:
+                    newTarget = lookAwayTransform;
+                    break;
+                case HeadLookatTargetType.LookAwayGround:
+                    newTarget = lookAwayGroundTransform;
+                    break;
+            }
+
+            StartCoroutine("DoLook");
+
+            currentHeadLookatTargetType = newHeadLookatTargetType;
         }
-        else
+    }
+
+    private IEnumerator DoLook()
+    {
+        float animTime = 1f;
+        float animTimer = 0.0f;
+
+        float percentage;
+
+        previousLookatPosition = headLookatTarget.position;
+
+        while (animTimer < animTime)
         {
-            head.rotation = Quaternion.Lerp(head.rotation, neck.rotation, Time.deltaTime * headRotationSpeed);
+            percentage = animTimer / animTime;
+            headLookatTarget.position = Vector3.Lerp(previousLookatPosition, newTarget.position, percentage);
+            animTimer += Time.deltaTime;
+            yield return null;
         }
     }
 }
