@@ -33,7 +33,7 @@ public class AvatarAnimController : MonoBehaviour
     public bool doHandsIK;
     [Range(0, 1)]
     public float handsIKweight;
-    private float targetHandsIKweight;
+    public float targetHandsIKweight;
 
     private void Start()
     {
