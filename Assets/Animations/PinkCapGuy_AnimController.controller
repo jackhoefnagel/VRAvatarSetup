@@ -1514,7 +1514,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Annoyed Head Shake
+  m_Name: ArmsCrossed
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1528,7 +1528,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: af8759ae278a84321b7ed70764a0da22, type: 3}
+  m_Motion: {fileID: 7400000, guid: 61932d5ab04914bb0962219f9ad1cf19, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -1624,7 +1624,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102873767126906008}
-    m_Position: {x: 324, y: 120, z: 0}
+    m_Position: {x: 372, y: 144, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102838033492301822}
     m_Position: {x: 372, y: 276, z: 0}
