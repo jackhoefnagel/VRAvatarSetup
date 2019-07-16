@@ -14,30 +14,35 @@ public class WalkAction : AvatarAction
 
     private IEnumerator DoWalk(AvatarStateController avatarStateController)
     {
-
-        avatarStateController.avatarNavMeshAgent.destination = destination.position;
-
-        yield return new WaitUntil(() => avatarStateController.avatarNavMeshAgent.pathStatus == NavMeshPathStatus.PathComplete);
-
-        yield return new WaitUntil(() => avatarStateController.avatarNavMeshAgent.remainingDistance < 0.1f);
-
-        float timer = 1.0f;
-        float time = 0.0f;
-        float percentage = 0.0f;
-
-        Quaternion oldRot = avatarStateController.avatarNavMeshAgent.transform.rotation;
-
-        while (time < timer)
+        if (Vector3.Distance(avatarStateController.avatarNavMeshAgent.transform.position, destination.position) > 0.4f)
         {
-            percentage = time / timer;
+            avatarStateController.avatarNavMeshAgent.destination = destination.position;
 
-            avatarStateController.avatarNavMeshAgent.transform.rotation = Quaternion.Slerp(oldRot, destination.rotation, percentage);
+            yield return new WaitUntil(() => avatarStateController.avatarNavMeshAgent.pathStatus == NavMeshPathStatus.PathComplete);
 
-            time += Time.deltaTime;
-            yield return 0;
+            yield return new WaitUntil(() => avatarStateController.avatarNavMeshAgent.remainingDistance < 0.1f);
+
         }
 
-        avatarStateController.avatarNavMeshAgent.transform.rotation = destination.rotation;
+            float timer = 1.0f;
+            float time = 0.0f;
+            float percentage = 0.0f;
+
+            Quaternion oldRot = avatarStateController.avatarNavMeshAgent.transform.rotation;
+
+            while (time < timer)
+            {
+                percentage = time / timer;
+
+                avatarStateController.avatarNavMeshAgent.transform.rotation = Quaternion.Slerp(oldRot, destination.rotation, percentage);
+
+                time += Time.deltaTime;
+                yield return 0;
+            }
+
+            avatarStateController.avatarNavMeshAgent.transform.rotation = destination.rotation;
+
+        
 
         ActionFinished();
     }

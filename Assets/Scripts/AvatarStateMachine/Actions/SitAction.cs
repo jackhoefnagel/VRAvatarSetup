@@ -26,13 +26,15 @@ public class SitAction : AvatarAction
 
     private IEnumerator DoSitAtPosition(AvatarStateController avatarStateController)
     {
+        if (Vector3.Distance(avatarStateController.avatarNavMeshAgent.transform.position, destination.position) > 0.4f)
+        {
+            avatarStateController.avatarNavMeshAgent.destination = destination.position;
 
-        avatarStateController.avatarNavMeshAgent.destination = destination.position;
+            yield return new WaitUntil(() => avatarStateController.avatarNavMeshAgent.pathStatus == NavMeshPathStatus.PathComplete);
 
-        yield return new WaitUntil(() => avatarStateController.avatarNavMeshAgent.pathStatus == NavMeshPathStatus.PathComplete);
+            yield return new WaitUntil(() => avatarStateController.avatarNavMeshAgent.remainingDistance < 0.1f);
 
-        yield return new WaitUntil(() => avatarStateController.avatarNavMeshAgent.remainingDistance < 0.1f);
-
+        }
         float timer = 1.0f;
         float time = 0.0f;
         float percentage = 0.0f;
@@ -52,6 +54,10 @@ public class SitAction : AvatarAction
         avatarStateController.avatarNavMeshAgent.transform.rotation = destination.rotation;
 
         avatarStateController.avatarAnimator.SetBool("sit", true);
+
+        avatarStateController.avatarNavMeshAgent.enabled = false;
+
+        yield return new WaitForSeconds(1.5f);
 
         ActionFinished();
     }

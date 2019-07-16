@@ -23,6 +23,8 @@ public class AvatarState : MonoBehaviour
     {
         currentlyPerformingState = true;
 
+        avatarStateController.PerformState(this);
+
         avatarStateController.avatarFollowScript.enabled = false;
 
         for (int i = 0; i < avatarActions.Length; i++)

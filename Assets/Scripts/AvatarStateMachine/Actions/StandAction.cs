@@ -27,6 +27,8 @@ public class StandAction : AvatarAction
     {
         avatarStateController.avatarAnimator.SetBool("sit",false);
 
+        avatarStateController.avatarNavMeshAgent.enabled = true;
+
         yield return new WaitForSeconds(1.5f);
 
         ActionFinished();

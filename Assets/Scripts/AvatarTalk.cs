@@ -102,6 +102,7 @@ public class AvatarTalk : MonoBehaviour
     {
         microphoneInput = Microphone.Start(micName, true, samples, 44100);
         microphonePlayback.clip = microphoneInput;
+        while(!(Microphone.GetPosition(micName) > 0)) { }
         microphonePlayback.Play();
 
         micEnabled = Microphone.IsRecording(micName);

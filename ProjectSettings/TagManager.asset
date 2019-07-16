@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - PickupAble
+  - Ears
+  - Spawner
+  - TvButton
+  - Controller
+  - DoorHandle
+  - Door
   layers:
   - Default
   - TransparentFX
@@ -13,7 +20,7 @@ TagManager:
   - UI
   - 
   - 
-  - PostProcessing
+  - Camera
   - 
   - 
   - 
