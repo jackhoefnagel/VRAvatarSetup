@@ -10,14 +10,14 @@ public class FMODunityHandler : MonoBehaviour
     [FMODUnity.EventRef]
     public string footstepEvent;
     public FMOD.Studio.EventInstance fmod_footstepEvent;
-
-    [FMODUnity.EventRef]
-    public string footscuffEvent;
-    public FMOD.Studio.EventInstance fmod_footscuffEvent;
+    public FMODUnity.StudioEventEmitter footstepEventEmitter;
 
     [Header("Footstep Variables")]
     public Transform feetSoundPropagationPosition;
     public float walkSpeedParamFloat;
+    public float turningSpeedFootscuffSensitivityThreshold = 0.5f;
+    public enum MovementType { Step, Scuff };
+    public MovementType movementType;
     public enum FloorType { Linoleum, Unknown };
     public FloorType floorType;
     public enum ShoeType { Sneakers, Crocs, Slippers, Unknown };
@@ -42,17 +42,9 @@ public class FMODunityHandler : MonoBehaviour
     private void OnEnable()
     {
         avatarAnimationEventsHandler.footstep.AddListener(DoFootstep);
+        avatarAnimationEventsHandler.footscuff.AddListener(DoFootscuff);
 
-        GameObject feetSoundPropagator = new GameObject("feetSoundPropagator");
-        feetSoundPropagator.transform.SetParent(avatarAnimationEventsHandler.transform);
-        feetSoundPropagator.transform.localPosition = new Vector3(0, 0, 0);
-        feetSoundPropagationPosition = feetSoundPropagator.transform;
-
-        fmod_footstepEvent = FMODUnity.RuntimeManager.CreateInstance(footstepEvent);
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(fmod_footstepEvent, feetSoundPropagator.transform, GetComponent<Rigidbody>());
-
-        fmod_footscuffEvent = FMODUnity.RuntimeManager.CreateInstance(footscuffEvent);
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(fmod_footscuffEvent, feetSoundPropagator.transform, GetComponent<Rigidbody>());
+        fmod_footstepEvent = footstepEventEmitter.EventInstance;
 
         /*
         for (int i = 0; i < ambienceObjects.Count; i++)
@@ -72,6 +64,8 @@ public class FMODunityHandler : MonoBehaviour
     {
 
         fmod_footstepEvent.setParameterByName("WalkingSpeed", avatarAnimationEventsHandler.currentWalkingSpeed);
+        movementType = MovementType.Step;
+        fmod_footstepEvent.setParameterByName("MovementType", (int)movementType);
         fmod_footstepEvent.setParameterByName("FloorType", (int)floorType);
         fmod_footstepEvent.setParameterByName("ShoeType", (int)shoeType);
 
@@ -79,11 +73,19 @@ public class FMODunityHandler : MonoBehaviour
 
     }
 
-    void DoFootScuff()
+    void DoFootscuff()
     {
-        fmod_footscuffEvent.setParameterByName("FloorType", (int)floorType);
-        fmod_footscuffEvent.setParameterByName("ShoeType", (int)shoeType);
 
-        fmod_footscuffEvent.start();
+        fmod_footstepEvent.setParameterByName("WalkingSpeed", avatarAnimationEventsHandler.currentWalkingSpeed);
+        movementType = MovementType.Scuff;
+        fmod_footstepEvent.setParameterByName("MovementType", (int)movementType);
+        fmod_footstepEvent.setParameterByName("FloorType", (int)floorType);
+        fmod_footstepEvent.setParameterByName("ShoeType", (int)shoeType);
+
+        if (Mathf.Abs(avatarAnimationEventsHandler.currentTurningSpeed) > turningSpeedFootscuffSensitivityThreshold)
+        {
+            fmod_footstepEvent.start();
+        }
+              
     }
 }
