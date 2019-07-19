@@ -27,6 +27,9 @@ public class FMODunityHandler : MonoBehaviour
     public SittingSurfaceType sittingSurfaceType;
     public enum SittingSurfaceType { Bed, PaddedChair, PlasticChair, WoodenChair };
 
+    [Header("Ambience")]
+    public List<GameObject> ambienceObjects;
+
 
     private void OnEnable()
     {
@@ -35,6 +38,7 @@ public class FMODunityHandler : MonoBehaviour
         GameObject feetSoundPropagator = new GameObject("feetSoundPropagator");
         feetSoundPropagator.transform.SetParent(avatarAnimationEventsHandler.transform);
         feetSoundPropagator.transform.localPosition = new Vector3(0, 0, 0);
+        feetSoundPropagationPosition = feetSoundPropagator.transform;
 
         fmod_footstepEvent = FMODUnity.RuntimeManager.CreateInstance(footstepEvent);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(fmod_footstepEvent, feetSoundPropagator.transform, GetComponent<Rigidbody>());
