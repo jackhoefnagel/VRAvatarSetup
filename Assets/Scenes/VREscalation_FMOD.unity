@@ -685,7 +685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionTag: 
-  Event: event:/TestSound
+  Event: event:/Char/Feet/Char_Footstep
   PlayEvent: 11
   StopEvent: 12
   AllowFadeout: 1
