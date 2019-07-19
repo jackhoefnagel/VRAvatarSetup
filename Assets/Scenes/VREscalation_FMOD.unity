@@ -1450,6 +1450,11 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  footscuff:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   animator: {fileID: 267800179}
   currentWalkingSpeed: 0
   currentTurningSpeed: 0
@@ -1890,6 +1895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   avatarAnimationEventsHandler: {fileID: 267800180}
   footstepEvent: event:/Char/Feet/Char_Footstep
+  footscuffEvent: event:/Char/Feet/Char_Footscuff
   feetSoundPropagationPosition: {fileID: 0}
   walkSpeedParamFloat: 0
   floorType: 0

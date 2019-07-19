@@ -11,6 +11,10 @@ public class FMODunityHandler : MonoBehaviour
     public string footstepEvent;
     public FMOD.Studio.EventInstance fmod_footstepEvent;
 
+    [FMODUnity.EventRef]
+    public string footscuffEvent;
+    public FMOD.Studio.EventInstance fmod_footscuffEvent;
+
     [Header("Footstep Variables")]
     public Transform feetSoundPropagationPosition;
     public float walkSpeedParamFloat;
@@ -47,6 +51,9 @@ public class FMODunityHandler : MonoBehaviour
         fmod_footstepEvent = FMODUnity.RuntimeManager.CreateInstance(footstepEvent);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(fmod_footstepEvent, feetSoundPropagator.transform, GetComponent<Rigidbody>());
 
+        fmod_footscuffEvent = FMODUnity.RuntimeManager.CreateInstance(footscuffEvent);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(fmod_footscuffEvent, feetSoundPropagator.transform, GetComponent<Rigidbody>());
+
         /*
         for (int i = 0; i < ambienceObjects.Count; i++)
         {
@@ -70,5 +77,13 @@ public class FMODunityHandler : MonoBehaviour
 
         fmod_footstepEvent.start();
 
+    }
+
+    void DoFootScuff()
+    {
+        fmod_footscuffEvent.setParameterByName("FloorType", (int)floorType);
+        fmod_footscuffEvent.setParameterByName("ShoeType", (int)shoeType);
+
+        fmod_footscuffEvent.start();
     }
 }

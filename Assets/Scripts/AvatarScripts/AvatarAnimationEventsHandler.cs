@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class AvatarAnimationEventsHandler : MonoBehaviour
 {
     [HideInInspector]
-    public UnityEvent footstep;
+    public UnityEvent footstep, footscuff;
 
     public Animator animator;
     public float currentWalkingSpeed;
@@ -15,6 +15,12 @@ public class AvatarAnimationEventsHandler : MonoBehaviour
     public void DoFootstep() {
         GetFootstepParams();
         footstep.Invoke();
+    }
+
+    public void DoFootscuff()
+    {
+        GetFootstepParams();
+        footscuff.Invoke();
     }
 
     private void GetFootstepParams()
