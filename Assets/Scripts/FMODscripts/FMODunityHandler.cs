@@ -28,7 +28,11 @@ public class FMODunityHandler : MonoBehaviour
     public enum SittingSurfaceType { Bed, PaddedChair, PlasticChair, WoodenChair };
 
     [Header("Ambience")]
-    public List<GameObject> ambienceObjects;
+    public List<FMODUnity.StudioEventEmitter> ambienceObjects;
+    public WindDirection windDirection;
+    public enum WindDirection { North, East, South, West };
+
+
 
 
     private void OnEnable()
@@ -42,6 +46,14 @@ public class FMODunityHandler : MonoBehaviour
 
         fmod_footstepEvent = FMODUnity.RuntimeManager.CreateInstance(footstepEvent);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(fmod_footstepEvent, feetSoundPropagator.transform, GetComponent<Rigidbody>());
+
+        /*
+        for (int i = 0; i < ambienceObjects.Count; i++)
+        {
+            ambienceObjects[i].EventInstance.setParameterByName("WindDirection", i);
+            ambienceObjects[i].EventInstance.start();
+        }
+        */
     }
 
     private void OnDisable()
