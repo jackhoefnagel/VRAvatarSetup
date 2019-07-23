@@ -1371,6 +1371,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 675555981}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &267800179 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1716665850216841054, guid: f79087b7229914586962f42983b543d3,
+    type: 3}
+  m_PrefabInstance: {fileID: 675555981}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &267800180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1383,6 +1389,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e8b67ef147a49b5927a31d0c3cfa32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  footstep:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  footscuff:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  animator: {fileID: 267800179}
+  currentWalkingSpeed: 0
+  currentTurningSpeed: 0
 --- !u!1 &318799279
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,8 +1837,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7a1dd73cfc94da8989effd3624102f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  avatarAnimationEventsHandler: {fileID: 267800180}
   footstepEvent: event:/TestSound
-  walksSpeedParam: 
+  footstepEventEmitter: {fileID: 0}
+  feetSoundPropagationPosition: {fileID: 0}
+  walkSpeedParamFloat: 0
+  turningSpeedFootscuffSensitivityThreshold: 0.5
+  movementType: 0
+  floorType: 0
+  shoeType: 0
+  fabricType: 0
+  sittingSurfaceType: 0
+  ambienceObjects: []
+  windDirection: 0
 --- !u!4 &415932796
 Transform:
   m_ObjectHideFlags: 0
