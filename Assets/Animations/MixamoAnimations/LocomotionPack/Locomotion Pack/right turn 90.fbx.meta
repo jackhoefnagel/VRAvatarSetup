@@ -470,15 +470,22 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.44
+      - time: 0.04054089
         functionName: DoFootscuff
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.9266667
+      - time: 0.48925373
         functionName: DoFootscuff
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.84045583
+        functionName: DoFootstep
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
