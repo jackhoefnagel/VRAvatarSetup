@@ -9,6 +9,8 @@ public class FMODunityHandler : MonoBehaviour
 
     public FMOD.Studio.EventInstance fmod_footstepEvent;
     public FMODUnity.StudioEventEmitter footstepEventEmitter;
+    public FMOD.Studio.EventInstance fmod_clothingrustleEvent;
+    public FMODUnity.StudioEventEmitter clothingrustleEventEmitter;
 
     [Header("Footstep Variables")]
     public float walkSpeedParamFloat;
@@ -33,44 +35,42 @@ public class FMODunityHandler : MonoBehaviour
     public WindDirection windDirection;
     public enum WindDirection { North, East, South, West };
 
+    private void Update()
+    {
+        UnityEngine.Debug.Log(FMODUnity.RuntimeManager.HasBankLoaded("event:/Char/Feet/Char_Footstep"));
+    }
 
     private void OnEnable()
     {
         avatarAnimationEventsHandler.footstep.AddListener(DoFootstep);
         avatarAnimationEventsHandler.footscuff.AddListener(DoFootscuff);
+        avatarAnimationEventsHandler.clothingrustleStart.AddListener(DoClothingRustleStart);
+        avatarAnimationEventsHandler.clothingrustleStop.AddListener(DoClothingRustleStop);
 
         fmod_footstepEvent = footstepEventEmitter.EventInstance;
+        fmod_clothingrustleEvent = clothingrustleEventEmitter.EventInstance;
 
-
-
-
-        /*
-        for (int i = 0; i < ambienceObjects.Count; i++)
-        {
-            ambienceObjects[i].EventInstance.setParameterByName("WindDirection", i);
-            ambienceObjects[i].EventInstance.start();
-        }
-        */
+        fmod_footstepEvent.triggerCue();
     }
-
-
 
     private void OnDisable()
     {
         avatarAnimationEventsHandler.footstep.RemoveListener(DoFootstep);
+        avatarAnimationEventsHandler.footscuff.RemoveListener(DoFootscuff);
+        avatarAnimationEventsHandler.clothingrustleStart.RemoveListener(DoClothingRustleStart);
+        avatarAnimationEventsHandler.clothingrustleStop.RemoveListener(DoClothingRustleStop);
     }
 
     void DoFootstep()
     {
-
         fmod_footstepEvent.setParameterByName("WalkingSpeed", avatarAnimationEventsHandler.currentWalkingSpeed);
         movementType = MovementType.Step;
         fmod_footstepEvent.setParameterByName("MovementType", (int)movementType);
         fmod_footstepEvent.setParameterByName("FloorType", (int)floorType);
         fmod_footstepEvent.setParameterByName("ShoeType", (int)shoeType);
 
-        fmod_footstepEvent.start();
-
+        RESULT result = fmod_footstepEvent.start();
+        UnityEngine.Debug.Log(result.ToString());
     }
 
     void DoFootscuff()
@@ -87,5 +87,22 @@ public class FMODunityHandler : MonoBehaviour
             fmod_footstepEvent.start();
         }
               
+    }
+
+    void DoClothingRustleStart()
+    {
+
+        fmod_clothingrustleEvent.setParameterByName("ClothingSpeed", 1f);
+        fmod_clothingrustleEvent.start();
+        UnityEngine.Debug.Log("valid? " + fmod_clothingrustleEvent.isValid());
+
+        fmod_clothingrustleEvent.getPlaybackState(out FMOD.Studio.PLAYBACK_STATE stateThing);
+        UnityEngine.Debug.Log("state? " + stateThing.ToString());
+    }
+
+    void DoClothingRustleStop()
+    {
+        UnityEngine.Debug.Log("shoul dstop");
+        fmod_clothingrustleEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 }
