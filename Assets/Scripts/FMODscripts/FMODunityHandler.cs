@@ -7,13 +7,10 @@ public class FMODunityHandler : MonoBehaviour
 {
     public AvatarAnimationEventsHandler avatarAnimationEventsHandler;
 
-    [FMODUnity.EventRef]
-    public string footstepEvent;
     public FMOD.Studio.EventInstance fmod_footstepEvent;
     public FMODUnity.StudioEventEmitter footstepEventEmitter;
 
     [Header("Footstep Variables")]
-    public Transform feetSoundPropagationPosition;
     public float walkSpeedParamFloat;
     public float turningSpeedFootscuffSensitivityThreshold = 0.5f;
     public enum MovementType { Step, Scuff };
@@ -37,14 +34,15 @@ public class FMODunityHandler : MonoBehaviour
     public enum WindDirection { North, East, South, West };
 
 
-
-
     private void OnEnable()
     {
         avatarAnimationEventsHandler.footstep.AddListener(DoFootstep);
         avatarAnimationEventsHandler.footscuff.AddListener(DoFootscuff);
 
         fmod_footstepEvent = footstepEventEmitter.EventInstance;
+
+
+
 
         /*
         for (int i = 0; i < ambienceObjects.Count; i++)
@@ -54,6 +52,8 @@ public class FMODunityHandler : MonoBehaviour
         }
         */
     }
+
+
 
     private void OnDisable()
     {
