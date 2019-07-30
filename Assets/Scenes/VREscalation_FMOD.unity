@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 8900000, guid: f084d048e2acec748aca5f2b0a07ae06, type: 3}
   m_Sun: {fileID: 148016448}
-  m_IndirectSpecularColor: {r: 0.21983542, g: 0.24629834, b: 0.28863308, a: 1}
+  m_IndirectSpecularColor: {r: 0.21983579, g: 0.24629875, b: 0.28863364, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -686,8 +686,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollisionTag: 
   Event: event:/Char/Feet/Char_Footstep
-  PlayEvent: 0
-  StopEvent: 0
+  PlayEvent: 1
+  StopEvent: 2
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -933,6 +933,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 9500000, guid: 1111073b053afc046bc84ab03acf063f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1111073b053afc046bc84ab03acf063f, type: 3}
+--- !u!4 &133192811 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 133192810}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &133236613 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1716665848961704668, guid: f79087b7229914586962f42983b543d3,
@@ -2517,7 +2522,7 @@ Transform:
   - {fileID: 1176924661}
   - {fileID: 649415698}
   - {fileID: 1160627140}
-  - {fileID: 982391954}
+  - {fileID: 133192811}
   - {fileID: 1086047413}
   - {fileID: 1095230801}
   - {fileID: 787391007}
@@ -4508,12 +4513,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!4 &982391954 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: 1111073b053afc046bc84ab03acf063f,
-    type: 3}
-  m_PrefabInstance: {fileID: 133192810}
-  m_PrefabAsset: {fileID: 0}
 --- !u!64 &982391955
 MeshCollider:
   m_ObjectHideFlags: 0
