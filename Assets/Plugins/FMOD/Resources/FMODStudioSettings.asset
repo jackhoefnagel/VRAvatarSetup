@@ -15,9 +15,12 @@ MonoBehaviour:
   SwitchSettingsMigration: 1
   HasSourceProject: 0
   HasPlatforms: 0
-  sourceProjectPath: 
-  SourceProjectPathUnformatted: 
-  SourceBankPathUnformatted: Assets/FMOD Banks/Desktop
+  sourceProjectPath: /Users/jorickbronius/Music/Projecten/Driftwood/Fontys/FMOD/Tec4S
+    VR/Tec4S VR.fspro
+  SourceProjectPathUnformatted: /Users/jorickbronius/Music/Projecten/Driftwood/Fontys/FMOD/Tec4S
+    VR/Tec4S VR.fspro
+  SourceBankPathUnformatted: /Users/jorickbronius/Music/Projecten/Driftwood/Fontys/FMOD/Tec4S
+    VR/Build/Desktop
   AutomaticEventLoading: 0
   BankLoadType: 0
   AutomaticSampleLoading: 1
@@ -58,7 +61,9 @@ MonoBehaviour:
     Value: 0
   - Platform: 20
     Value: 0
-  BankDirectorySettings: []
+  BankDirectorySettings:
+  - Platform: 2
+    Value: Desktop
   VirtualChannelSettings:
   - Platform: 1
     Value: 1024
@@ -73,7 +78,8 @@ MonoBehaviour:
     Value: 32
   - Platform: 20
     Value: 32
-  Plugins: []
+  Plugins:
+  - resonanceaudio
   MasterBanks:
   - Master
   Banks:
