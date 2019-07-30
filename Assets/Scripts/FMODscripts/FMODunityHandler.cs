@@ -37,7 +37,7 @@ public class FMODunityHandler : MonoBehaviour
 
     private void Update()
     {
-        UnityEngine.Debug.Log(FMODUnity.RuntimeManager.HasBankLoaded("event:/Char/Feet/Char_Footstep"));
+
     }
 
     private void OnEnable()
@@ -70,7 +70,7 @@ public class FMODunityHandler : MonoBehaviour
         fmod_footstepEvent.setParameterByName("ShoeType", (int)shoeType);
 
         RESULT result = fmod_footstepEvent.start();
-        UnityEngine.Debug.Log(result.ToString());
+        //UnityEngine.Debug.Log(result.ToString());
     }
 
     void DoFootscuff()
