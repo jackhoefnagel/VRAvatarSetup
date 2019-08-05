@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/NewRoom.unity
+    path: Assets/Scenes/OLD/NewRoom.unity
     guid: dc460ffa73211c648933278a8135f94a
   - enabled: 1
-    path: Assets/Scenes/NewRoom_PrettyScene_StatesDisabled.unity
+    path: Assets/Scenes/OLD/NewRoom_PrettyScene_StatesDisabled.unity
     guid: 6d8b2dbaaa8e946df9f1ff7984c39c36
   m_configObjects: {}
