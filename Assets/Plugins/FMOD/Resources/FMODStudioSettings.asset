@@ -17,7 +17,7 @@ MonoBehaviour:
   HasPlatforms: 0
   sourceProjectPath: 
   SourceProjectPathUnformatted: 
-  SourceBankPathUnformatted: Assets/FMOD Banks/Desktop
+  SourceBankPathUnformatted: Assets\FMOD Banks\Desktop
   AutomaticEventLoading: 0
   BankLoadType: 0
   AutomaticSampleLoading: 1
@@ -81,6 +81,5 @@ MonoBehaviour:
   - env
   - mus
   - ui
-  BanksToLoad:
-  - 
+  BanksToLoad: []
   LiveUpdatePort: 9264
