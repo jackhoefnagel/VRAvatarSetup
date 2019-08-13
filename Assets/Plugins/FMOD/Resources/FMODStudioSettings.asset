@@ -31,10 +31,8 @@ MonoBehaviour:
   - Platform: 20
     Value: 3
   SampleRateSettings:
-  - Platform: 1
-    Value: 48000
   - Platform: 2
-    Value: 0
+    Value: 48000
   - Platform: 20
     Value: 0
   LiveUpdateSettings:
@@ -48,7 +46,7 @@ MonoBehaviour:
   - Platform: 1
     Value: 1
   - Platform: 2
-    Value: 0
+    Value: 2
   - Platform: 20
     Value: 0
   LoggingSettings:
@@ -70,7 +68,7 @@ MonoBehaviour:
   - Platform: 1
     Value: 256
   - Platform: 2
-    Value: 32
+    Value: 34
   - Platform: 20
     Value: 32
   Plugins:
