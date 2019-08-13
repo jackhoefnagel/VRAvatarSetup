@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionTag: 
-  Event: event:/Env/Amb_TreatmentRoom
+  Event: event:/Env/Amb_OutsideTreatmentRoom
   PlayEvent: 1
   StopEvent: 12
   AllowFadeout: 1
@@ -4211,7 +4211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionTag: 
-  Event: event:/Env/Amb_TreatmentRoom
+  Event: event:/Env/Amb_OutsideTreatmentRoom
   PlayEvent: 1
   StopEvent: 12
   AllowFadeout: 1
@@ -4700,7 +4700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionTag: 
-  Event: event:/Env/Amb_TreatmentRoom
+  Event: event:/Env/Amb_OutsideTreatmentRoom
   PlayEvent: 1
   StopEvent: 12
   AllowFadeout: 1
@@ -5576,15 +5576,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rt60s:
-  - 0.4651116
-  - 0.45522517
-  - 0.44690746
-  - 0.44612783
-  - 0.4257402
-  - 0.4191102
-  - 0.4138573
-  - 0.38277045
-  - 0.33842236
+  - 0.45530304
+  - 0.44423488
+  - 0.43586946
+  - 0.4340233
+  - 0.41686147
+  - 0.4116268
+  - 0.40578625
+  - 0.37524483
+  - 0.33537954
   reverbGainDb: 0
   reverbBrightness: 0
   reverbTime: 0
@@ -5592,9 +5592,9 @@ MonoBehaviour:
   boxRegionSize: {x: 5, y: 5, z: 5}
   sphereRegionRadius: 1
   onlyApplyWhenVisible: 1
-  proxyRoomPosition: {x: 0.9335097, y: 1.2754525, z: 0.7933598}
+  proxyRoomPosition: {x: 0.9332025, y: 1.2747602, z: 0.7917352}
   proxyRoomRotation: {x: 0, y: 0, z: 0, w: 1}
-  proxyRoomSize: {x: 3.2795143, y: 3.2795143, z: 3.2795143}
+  proxyRoomSize: {x: 3.276618, y: 3.276618, z: 3.276618}
   proxyRoomLeftWall: 5
   proxyRoomRightWall: 5
   proxyRoomFloor: 5
@@ -8290,7 +8290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionTag: 
-  Event: event:/Env/Amb_TreatmentRoom
+  Event: event:/Env/Amb_OutsideTreatmentRoom
   PlayEvent: 11
   StopEvent: 12
   AllowFadeout: 1
