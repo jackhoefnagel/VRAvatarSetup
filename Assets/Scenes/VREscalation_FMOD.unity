@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionTag: 
-  Event: event:/Env/Amb_OutsideTreatmentRoom
+  Event: event:/Env/TreatmentRoom/Amb_OutsideTreatmentRoom
   PlayEvent: 1
   StopEvent: 12
   AllowFadeout: 1
@@ -2031,7 +2031,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 415932794}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.52, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1306122964}
@@ -3668,6 +3668,14 @@ PrefabInstance:
     - target: {fileID: 475244, guid: 7a135b1a2cb9c8f488d4dd00c55ab283, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 498340, guid: 7a135b1a2cb9c8f488d4dd00c55ab283, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.003
+      objectReference: {fileID: 0}
+    - target: {fileID: 498340, guid: 7a135b1a2cb9c8f488d4dd00c55ab283, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a135b1a2cb9c8f488d4dd00c55ab283, type: 3}
@@ -5555,7 +5563,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1188021137}
-  - component: {fileID: 1188021136}
   - component: {fileID: 1188021138}
   m_Layer: 0
   m_Name: Reverb_Probe
@@ -5564,44 +5571,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1188021136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1188021135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97139fbde32144241958106d7df4b4e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rt60s:
-  - 0.45530304
-  - 0.44423488
-  - 0.43586946
-  - 0.4340233
-  - 0.41686147
-  - 0.4116268
-  - 0.40578625
-  - 0.37524483
-  - 0.33537954
-  reverbGainDb: 0
-  reverbBrightness: 0
-  reverbTime: 0
-  regionShape: 1
-  boxRegionSize: {x: 5, y: 5, z: 5}
-  sphereRegionRadius: 1
-  onlyApplyWhenVisible: 0
-  proxyRoomPosition: {x: 0.9332025, y: 1.2747602, z: 0.7917352}
-  proxyRoomRotation: {x: 0, y: 0, z: 0, w: 1}
-  proxyRoomSize: {x: 3.276618, y: 3.276618, z: 3.276618}
-  proxyRoomLeftWall: 5
-  proxyRoomRightWall: 5
-  proxyRoomFloor: 5
-  proxyRoomCeiling: 16
-  proxyRoomBackWall: 22
-  proxyRoomFrontWall: 4
 --- !u!4 &1188021137
 Transform:
   m_ObjectHideFlags: 0
@@ -5634,8 +5603,8 @@ MonoBehaviour:
   ceiling: 1
   backWall: 15
   frontWall: 15
-  reflectivity: 1
-  reverbGainDb: 0
+  reflectivity: 0.73
+  reverbGainDb: -5.4
   reverbBrightness: 0
   reverbTime: 1
   size: {x: 5, y: 5, z: 5}
