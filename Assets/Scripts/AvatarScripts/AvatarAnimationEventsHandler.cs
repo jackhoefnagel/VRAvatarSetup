@@ -8,12 +8,11 @@ public class AvatarAnimationEventsHandler : MonoBehaviour
     [HideInInspector]
     public UnityEvent footstep, footscuff;
     [HideInInspector]
-    public UnityEvent clothingrustleStart, clothingrustleStop;
+    public UnityEvent clothingrustleStart, clothingrustleStop, sitStart, standStart;
 
     public Animator animator;
     public float currentWalkingSpeed;
     public float currentTurningSpeed;
-    public float currentClothingrustleSpeed;
 
     public void DoFootstep() {
         GetFootstepParams();
@@ -28,7 +27,6 @@ public class AvatarAnimationEventsHandler : MonoBehaviour
 
     public void DoClothingRustle(float clothingRustleSpeed)
     {
-        currentClothingrustleSpeed = clothingRustleSpeed;
         clothingrustleStart.Invoke();
     }
 
@@ -41,6 +39,16 @@ public class AvatarAnimationEventsHandler : MonoBehaviour
     {
         currentWalkingSpeed = animator.GetFloat("avatarSpeed");
         currentTurningSpeed = animator.GetFloat("avatarTurningSpeed");
+    }
+
+    public void DoSit()
+    {
+        sitStart.Invoke();
+    }
+
+    public void DoStand()
+    {
+        standStart.Invoke();
     }
 
 }

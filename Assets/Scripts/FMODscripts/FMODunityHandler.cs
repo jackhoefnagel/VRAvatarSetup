@@ -11,6 +11,10 @@ public class FMODunityHandler : MonoBehaviour
     public FMODUnity.StudioEventEmitter footstepEventEmitter;
     public FMOD.Studio.EventInstance fmod_clothingrustleEvent;
     public FMODUnity.StudioEventEmitter clothingrustleEventEmitter;
+    public FMOD.Studio.EventInstance fmod_sittingEvent;
+    public FMODUnity.StudioEventEmitter sittingEventEmitter;
+    public FMOD.Studio.EventInstance fmod_standingEvent;
+    public FMODUnity.StudioEventEmitter standingEventEmitter;
 
     [Header("Footstep Variables")]
     public float walkSpeedParamFloat;
@@ -29,16 +33,14 @@ public class FMODunityHandler : MonoBehaviour
     [Header("Sitting Variables")]
     public SittingSurfaceType sittingSurfaceType;
     public enum SittingSurfaceType { Bed, PaddedChair, PlasticChair, WoodenChair };
+    public float sittingSoundFadeInTime = 0.5f;
+    public float sittingSoundFadeOutTime = 0.5f;
 
     [Header("Ambience")]
     public List<FMODUnity.StudioEventEmitter> ambienceObjects;
     public WindDirection windDirection;
     public enum WindDirection { North, East, South, West };
 
-    private void Update()
-    {
-
-    }
 
     private void OnEnable()
     {
@@ -46,14 +48,21 @@ public class FMODunityHandler : MonoBehaviour
         avatarAnimationEventsHandler.footscuff.AddListener(DoFootscuff);
         avatarAnimationEventsHandler.clothingrustleStart.AddListener(DoClothingRustleStart);
         avatarAnimationEventsHandler.clothingrustleStop.AddListener(DoClothingRustleStop);
+        avatarAnimationEventsHandler.sitStart.AddListener(DoSitStart);
+        avatarAnimationEventsHandler.standStart.AddListener(DoStandStart);
 
         fmod_footstepEvent = footstepEventEmitter.EventInstance;
 
         fmod_clothingrustleEvent = clothingrustleEventEmitter.EventInstance;
         fmod_clothingrustleEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
 
+        fmod_sittingEvent = sittingEventEmitter.EventInstance;
+        fmod_sittingEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
 
-        //fmod_footstepEvent.triggerCue();
+
+        fmod_standingEvent = standingEventEmitter.EventInstance;
+        fmod_standingEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+
     }
 
     private void OnDisable()
@@ -73,7 +82,6 @@ public class FMODunityHandler : MonoBehaviour
         fmod_footstepEvent.setParameterByName("ShoeType", (int)shoeType);
 
         RESULT result = fmod_footstepEvent.start();
-        //UnityEngine.Debug.Log(result.ToString());
     }
 
     void DoFootscuff()
@@ -101,5 +109,15 @@ public class FMODunityHandler : MonoBehaviour
     void DoClothingRustleStop()
     {
         fmod_clothingrustleEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+    }
+
+    void DoSitStart()
+    {
+        fmod_sittingEvent.start();
+    }
+
+    void DoStandStart()
+    {
+        fmod_standingEvent.start();
     }
 }
