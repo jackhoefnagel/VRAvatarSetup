@@ -48,9 +48,13 @@ public class FMODunityHandler : MonoBehaviour
         avatarAnimationEventsHandler.clothingrustleStop.AddListener(DoClothingRustleStop);
 
         fmod_footstepEvent = footstepEventEmitter.EventInstance;
-        fmod_clothingrustleEvent = clothingrustleEventEmitter.EventInstance;
 
-        fmod_footstepEvent.triggerCue();
+        fmod_clothingrustleEvent = clothingrustleEventEmitter.EventInstance;
+        fmod_clothingrustleEvent.setVolume(0.1f);
+        fmod_clothingrustleEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+
+
+        //fmod_footstepEvent.triggerCue();
     }
 
     private void OnDisable()
@@ -91,17 +95,12 @@ public class FMODunityHandler : MonoBehaviour
 
     void DoClothingRustleStart()
     {
-        fmod_clothingrustleEvent.setParameterByName("ClothingSpeed", 1f);
-        //fmod_clothingrustleEvent.start();
-        UnityEngine.Debug.Log("valid? " + fmod_clothingrustleEvent.isValid());
-
-        fmod_clothingrustleEvent.getPlaybackState(out FMOD.Studio.PLAYBACK_STATE stateThing);
-        UnityEngine.Debug.Log("state? " + stateThing.ToString());
+        fmod_clothingrustleEvent.setParameterByName("ClothingSpeed", Random.Range(0.1f, 0.9f));
+        fmod_clothingrustleEvent.start();
     }
 
     void DoClothingRustleStop()
     {
-        UnityEngine.Debug.Log("shoul dstop");
         fmod_clothingrustleEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 }
