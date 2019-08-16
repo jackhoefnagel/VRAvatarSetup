@@ -50,7 +50,6 @@ public class FMODunityHandler : MonoBehaviour
         fmod_footstepEvent = footstepEventEmitter.EventInstance;
 
         fmod_clothingrustleEvent = clothingrustleEventEmitter.EventInstance;
-        fmod_clothingrustleEvent.setVolume(0.1f);
         fmod_clothingrustleEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
 
 
