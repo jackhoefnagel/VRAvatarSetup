@@ -92,7 +92,7 @@ public class FMODunityHandler : MonoBehaviour
     void DoClothingRustleStart()
     {
         fmod_clothingrustleEvent.setParameterByName("ClothingSpeed", 1f);
-        fmod_clothingrustleEvent.start();
+        //fmod_clothingrustleEvent.start();
         UnityEngine.Debug.Log("valid? " + fmod_clothingrustleEvent.isValid());
 
         fmod_clothingrustleEvent.getPlaybackState(out FMOD.Studio.PLAYBACK_STATE stateThing);
