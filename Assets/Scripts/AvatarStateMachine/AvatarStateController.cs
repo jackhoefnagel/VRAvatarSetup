@@ -39,12 +39,12 @@ public class AvatarStateController : MonoBehaviour
 
     public bool IsPerformingState()
     {
+        //TODO: state logging clearer
         bool hasCurrentAvatarState = false;
         if(currentAvatarState == null)
         {
 
         }
-        Debug.Log("IsPerformingState: " + (currentAvatarState != null).ToString());
         return currentAvatarState != null;
     }
 

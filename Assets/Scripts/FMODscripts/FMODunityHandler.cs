@@ -91,7 +91,6 @@ public class FMODunityHandler : MonoBehaviour
 
     void DoClothingRustleStart()
     {
-
         fmod_clothingrustleEvent.setParameterByName("ClothingSpeed", 1f);
         fmod_clothingrustleEvent.start();
         UnityEngine.Debug.Log("valid? " + fmod_clothingrustleEvent.isValid());
