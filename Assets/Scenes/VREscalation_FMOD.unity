@@ -504,17 +504,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollisionTag: 
   Event: event:/Env/TreatmentRoom/Amb_OutsideTreatmentRoom
-  PlayEvent: 1
+  PlayEvent: 11
   StopEvent: 12
   AllowFadeout: 1
   TriggerOnce: 0
-  Preload: 0
+  Preload: 1
   Params:
   - Name: WindDirection
     Value: 2
   OverrideAttenuation: 0
-  OverrideMinDistance: 5
-  OverrideMaxDistance: 74.5
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &66942891
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,11 +693,11 @@ MonoBehaviour:
   StopEvent: 12
   AllowFadeout: 1
   TriggerOnce: 0
-  Preload: 0
+  Preload: 1
   Params: []
   OverrideAttenuation: 0
-  OverrideMinDistance: 0
-  OverrideMaxDistance: 0
+  OverrideMinDistance: 5
+  OverrideMaxDistance: 74.5
 --- !u!1 &106299011
 GameObject:
   m_ObjectHideFlags: 0
@@ -1536,6 +1536,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  blinkIntervalSeconds: 3
   animator: {fileID: 267800179}
   currentWalkingSpeed: 0
   currentTurningSpeed: 0
@@ -1964,7 +1965,6 @@ GameObject:
   m_Component:
   - component: {fileID: 415932796}
   - component: {fileID: 415932795}
-  - component: {fileID: 415932797}
   m_Layer: 0
   m_Name: Audio_FMOD
   m_TagString: Untagged
@@ -2016,32 +2016,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1306122964}
+  - {fileID: 1188021137}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &415932797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 415932794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b7929fa5e730414cb1f18134aef71c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftWall: 4
-  rightWall: 4
-  floor: 14
-  ceiling: 15
-  backWall: 4
-  frontWall: 4
-  reflectivity: 1
-  reverbGainDb: 0
-  reverbBrightness: 0
-  reverbTime: 1
-  size: {x: 5, y: 5, z: 5}
 --- !u!1 &434235179
 GameObject:
   m_ObjectHideFlags: 0
@@ -2573,7 +2551,6 @@ Transform:
   - {fileID: 787391007}
   - {fileID: 1894357028}
   - {fileID: 702483925}
-  - {fileID: 1188021137}
   m_Father: {fileID: 642268072}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4185,17 +4162,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollisionTag: 
   Event: event:/Env/TreatmentRoom/Amb_OutsideTreatmentRoom
-  PlayEvent: 1
+  PlayEvent: 11
   StopEvent: 12
   AllowFadeout: 1
   TriggerOnce: 0
-  Preload: 0
+  Preload: 1
   Params:
   - Name: WindDirection
     Value: 3
   OverrideAttenuation: 0
-  OverrideMinDistance: 6.4
-  OverrideMaxDistance: 15
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &864981318
 GameObject:
   m_ObjectHideFlags: 0
@@ -4638,17 +4615,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollisionTag: 
   Event: event:/Env/TreatmentRoom/Amb_OutsideTreatmentRoom
-  PlayEvent: 1
+  PlayEvent: 11
   StopEvent: 12
   AllowFadeout: 1
   TriggerOnce: 0
-  Preload: 0
+  Preload: 1
   Params:
   - Name: WindDirection
     Value: 1
   OverrideAttenuation: 0
-  OverrideMinDistance: 6.4
-  OverrideMaxDistance: 15
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1001 &1015717787
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5272,11 +5249,11 @@ MonoBehaviour:
   StopEvent: 12
   AllowFadeout: 1
   TriggerOnce: 0
-  Preload: 0
+  Preload: 1
   Params: []
   OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
+  OverrideMinDistance: 5
+  OverrideMaxDistance: 74.5
 --- !u!1001 &1152022122
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5553,7 +5530,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1188021137
 Transform:
   m_ObjectHideFlags: 0
@@ -5562,11 +5539,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188021135}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.036, y: 1.29, z: 0.88}
+  m_LocalPosition: {x: 2.556, y: 1.29, z: 0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 529367486}
-  m_RootOrder: 15
+  m_Father: {fileID: 415932796}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1188021138
 MonoBehaviour:
@@ -6657,11 +6634,11 @@ MonoBehaviour:
   StopEvent: 12
   AllowFadeout: 1
   TriggerOnce: 0
-  Preload: 0
+  Preload: 1
   Params: []
   OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
+  OverrideMinDistance: 5
+  OverrideMaxDistance: 74.5
 --- !u!1 &1606865670
 GameObject:
   m_ObjectHideFlags: 0
@@ -7309,7 +7286,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1772849785}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.473, z: 0}
+  m_LocalPosition: {x: 0, y: 2.473, z: 0.494}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 267800181}
@@ -7333,7 +7310,7 @@ MonoBehaviour:
   StopEvent: 12
   AllowFadeout: 1
   TriggerOnce: 0
-  Preload: 0
+  Preload: 1
   Params:
   - Name: ClothingSpeed
     Value: 0.1
@@ -7342,8 +7319,8 @@ MonoBehaviour:
   - Name: StandingState
     Value: 0
   OverrideAttenuation: 0
-  OverrideMinDistance: 0
-  OverrideMaxDistance: 0
+  OverrideMinDistance: 5
+  OverrideMaxDistance: 74.5
 --- !u!1 &1776866536
 GameObject:
   m_ObjectHideFlags: 0
@@ -8115,11 +8092,11 @@ MonoBehaviour:
   StopEvent: 12
   AllowFadeout: 1
   TriggerOnce: 0
-  Preload: 0
+  Preload: 1
   Params: []
   OverrideAttenuation: 0
-  OverrideMinDistance: 0
-  OverrideMaxDistance: 0
+  OverrideMinDistance: 5
+  OverrideMaxDistance: 74.5
 --- !u!4 &1927962746
 Transform:
   m_ObjectHideFlags: 0
@@ -8381,7 +8358,7 @@ MonoBehaviour:
   StopEvent: 12
   AllowFadeout: 1
   TriggerOnce: 0
-  Preload: 0
+  Preload: 1
   Params:
   - Name: WindDirection
     Value: 0

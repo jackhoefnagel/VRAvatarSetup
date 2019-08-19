@@ -10,9 +10,22 @@ public class AvatarAnimationEventsHandler : MonoBehaviour
     [HideInInspector]
     public UnityEvent clothingrustleStart, clothingrustleStop, sitStart, standStart;
 
+    public float blinkIntervalSeconds = 3f;
+    private float blinkTimer = 0f;
+
     public Animator animator;
     public float currentWalkingSpeed;
     public float currentTurningSpeed;
+
+    public void Update()
+    {
+        blinkTimer += Time.deltaTime;
+        if(blinkTimer > blinkIntervalSeconds)
+        {
+            animator.SetTrigger("shouldBlink");
+            blinkTimer = 0f;
+        }
+    }
 
     public void DoFootstep() {
         GetFootstepParams();

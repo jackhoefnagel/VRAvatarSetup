@@ -32,9 +32,11 @@ MonoBehaviour:
     Value: 3
   SampleRateSettings:
   - Platform: 2
-    Value: 48000
+    Value: 44100
   - Platform: 20
     Value: 0
+  - Platform: 1
+    Value: 44100
   LiveUpdateSettings:
   - Platform: 1
     Value: 1

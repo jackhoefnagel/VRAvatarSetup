@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 68a584030e54841bb9a6cc7311041cae
 ModelImporter:
-  serializedVersion: 25
+  serializedVersion: 26
   internalIDToNameTable:
   - first:
       1: 100000
@@ -470,8 +470,8 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0
-        functionName: DoFootscuff
+      - time: 0.021531101
+        functionName: StopClothingRustle
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -488,6 +488,7 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
