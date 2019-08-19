@@ -77,13 +77,8 @@ MonoBehaviour:
   - resonanceaudio
   MasterBanks:
   - Master
-  - Desktop\Master
   Banks:
   - char
-  - Desktop\char
-  - Desktop\env
-  - Desktop\mus
-  - Desktop\ui
   - env
   - mus
   - ui

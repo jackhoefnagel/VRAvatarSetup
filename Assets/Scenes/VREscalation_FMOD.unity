@@ -5722,7 +5722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionTag: 
-  Event: event:/TestSound
+  Event: event:/Env/TreatmentRoom/TV_VideoClip
   PlayEvent: 11
   StopEvent: 12
   AllowFadeout: 1
