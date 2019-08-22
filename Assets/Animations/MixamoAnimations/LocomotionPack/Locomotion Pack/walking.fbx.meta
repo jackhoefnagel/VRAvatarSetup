@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: be13e9b9e61e547d2abc5976426932d8
 ModelImporter:
-  serializedVersion: 25
+  serializedVersion: 26
   internalIDToNameTable:
   - first:
       1: 100000
@@ -474,11 +474,39 @@ ModelImporter:
         functionName: DoFootstep
         data: 
         objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
+        floatParameter: 1
         intParameter: 0
         messageOptions: 0
       - time: 0.7431177
         functionName: DoFootstep
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.41494843
+        functionName: DoClothingRustle
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.6185567
+        functionName: StopClothingRustle
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9020619
+        functionName: DoClothingRustle
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 1
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9922681
+        functionName: StopClothingRustle
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -495,6 +523,7 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
