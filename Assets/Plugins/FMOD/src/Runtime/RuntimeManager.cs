@@ -494,7 +494,7 @@ retry:
 
         protected bool isOverlayEnabled = false;
         FMODRuntimeManagerOnGUIHelper overlayDrawer = null;
-        Rect windowRect = new Rect(Screen.width-300, Screen.height-100, 300, 100);
+        Rect windowRect = new Rect(10, 10, 300, 100);
 
         public void ExecuteOnGUI()
         {
