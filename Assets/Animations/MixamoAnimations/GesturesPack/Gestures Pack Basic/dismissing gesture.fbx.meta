@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: c3529218974dc44eb96d8a38eeb54be4
 ModelImporter:
-  serializedVersion: 25
+  serializedVersion: 26
   internalIDToNameTable:
   - first:
       1: 100000
@@ -470,7 +470,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.093163215
+      - time: 0.07481459
         functionName: DoClothingRustle
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -478,6 +478,27 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.6323177
+        functionName: StopClothingRustle
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.14743589
+        functionName: StopClothingRustle
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.21153845
+        functionName: DoClothingRustle
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.3205128
         functionName: StopClothingRustle
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -495,6 +516,7 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
