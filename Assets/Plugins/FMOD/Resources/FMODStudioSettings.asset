@@ -17,7 +17,7 @@ MonoBehaviour:
   HasPlatforms: 0
   sourceProjectPath: 
   SourceProjectPathUnformatted: 
-  SourceBankPathUnformatted: Assets\FMOD Banks\Desktop\Desktop
+  SourceBankPathUnformatted: Assets/FMOD Banks
   AutomaticEventLoading: 0
   BankLoadType: 0
   AutomaticSampleLoading: 1
@@ -76,11 +76,11 @@ MonoBehaviour:
   Plugins:
   - resonanceaudio
   MasterBanks:
-  - Master
+  - Desktop/Master
   Banks:
-  - char
-  - env
-  - mus
-  - ui
+  - Desktop/char
+  - Desktop/env
+  - Desktop/mus
+  - Desktop/ui
   BanksToLoad: []
   LiveUpdatePort: 9264
