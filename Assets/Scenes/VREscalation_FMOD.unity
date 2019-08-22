@@ -38,11 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 8900000, guid: f084d048e2acec748aca5f2b0a07ae06, type: 3}
   m_Sun: {fileID: 148016448}
-<<<<<<< HEAD
   m_IndirectSpecularColor: {r: 0.21983542, g: 0.24629834, b: 0.28863308, a: 1}
-=======
-  m_IndirectSpecularColor: {r: 0.21983579, g: 0.24629875, b: 0.28863364, a: 1}
->>>>>>> e19fccdd0b99e7e08d81de5debb8a76a20858df9
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7963,8 +7959,8 @@ MonoBehaviour:
   Preload: 1
   Params: []
   OverrideAttenuation: 0
-  OverrideMinDistance: 5
-  OverrideMaxDistance: 74.5
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!4 &1927962746
 Transform:
   m_ObjectHideFlags: 0
