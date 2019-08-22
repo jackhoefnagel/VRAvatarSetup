@@ -79,6 +79,7 @@ public class FMODunityHandler : MonoBehaviour
 
     void DoFootstep()
     {
+        Set3DAttributes(fmod_footstepEvent, footstepEventEmitter);
         fmod_footstepEvent.setParameterByName("WalkingSpeed", avatarAnimationEventsHandler.currentWalkingSpeed);
         movementType = MovementType.Step;
         fmod_footstepEvent.setParameterByName("MovementType", (int)movementType);
@@ -90,7 +91,7 @@ public class FMODunityHandler : MonoBehaviour
 
     void DoFootscuff()
     {
-
+        Set3DAttributes(fmod_footstepEvent, footstepEventEmitter);
         fmod_footstepEvent.setParameterByName("WalkingSpeed", avatarAnimationEventsHandler.currentWalkingSpeed);
         movementType = MovementType.Scuff;
         fmod_footstepEvent.setParameterByName("MovementType", (int)movementType);
