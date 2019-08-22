@@ -26,45 +26,19 @@ namespace FMODUnity
             }
         }
 
-        const string BuildFolder = "Build";
+        public const string BuildFolder = "Build";
 
         public static string GetBankDirectory()
         {
-            if (Settings.Instance.HasSourceProject && !String.IsNullOrEmpty(Settings.Instance.SourceProjectPath))
+            if (Settings.Instance.HasSourceProject && !String.IsNullOrEmpty(Settings.Instance.SourceProjectPathRelative))
             {
-                string projectPath = Settings.Instance.SourceProjectPath;
+                string projectPath = Settings.Instance.SourceProjectPathFull;
                 string projectFolder = Path.GetDirectoryName(projectPath);
                 return Path.Combine(projectFolder, BuildFolder);
             }
-            else if (!String.IsNullOrEmpty(Settings.Instance.SourceBankPath))
+            else if (!String.IsNullOrEmpty(Settings.Instance.SourceBankPathRelative))
             {
-                return Path.GetFullPath(Settings.Instance.SourceBankPath);
-            }
-            return null;
-        }
-
-        public static string GetBankDirectoryUnformatted()
-        {
-            if (Settings.Instance.HasSourceProject && !String.IsNullOrEmpty(Settings.Instance.SourceProjectPathUnformatted))
-            {
-                string projectPath = Settings.Instance.SourceProjectPathUnformatted;
-                char directorySeparator = '\\';
-                var folderIndex = projectPath.LastIndexOf(directorySeparator);
-                if (folderIndex < 0)
-                {
-                    directorySeparator = '/';
-                    folderIndex = projectPath.LastIndexOf(directorySeparator);
-                }
-                string projectFolder = "";
-                if (folderIndex > 0)
-                {
-                    projectFolder = projectPath.Substring(0, folderIndex);
-                }
-                return projectFolder + directorySeparator + BuildFolder;
-            }
-            else if (!String.IsNullOrEmpty(Settings.Instance.SourceBankPathUnformatted))
-            {
-                return Settings.Instance.SourceBankPathUnformatted;
+                return Path.GetFullPath(Settings.Instance.SourceBankPathRelative);
             }
             return null;
         }
@@ -76,20 +50,20 @@ namespace FMODUnity
             var settings = Settings.Instance;
             if (settings.HasSourceProject)
             {
-                if (string.IsNullOrEmpty(settings.SourceProjectPath))
+                if (string.IsNullOrEmpty(settings.SourceProjectPathRelative))
                 {
                     valid = false;
                     reason = "FMOD Studio Project path not set";
                     return;
                 }
-                if (!File.Exists(settings.SourceProjectPath))
+                if (!File.Exists(settings.SourceProjectPathFull))
                 {
                     valid = false;
                     reason = "FMOD Studio Project not found";
                     return;
                 }
 
-                string projectPath = settings.SourceProjectPath;
+                string projectPath = settings.SourceProjectPathFull;
                 string projectFolder = Path.GetDirectoryName(projectPath);
                 string buildFolder = Path.Combine(projectFolder, BuildFolder);
                 if (!Directory.Exists(buildFolder) ||
@@ -104,13 +78,13 @@ namespace FMODUnity
             }
             else
             {
-                if (String.IsNullOrEmpty(settings.SourceBankPath))
+                if (String.IsNullOrEmpty(settings.SourceBankPathRelative))
                 {
                     valid = false;
                     reason = "Build path not set";
                     return;
                 }
-                if (!Directory.Exists(settings.SourceBankPath))
+                if (!Directory.Exists(settings.SourceBankPathFull))
                 {
                     valid = false;
                     reason = "Build path doesn't exist";
@@ -119,7 +93,7 @@ namespace FMODUnity
 
                 if (settings.HasPlatforms)
                 {
-                    if (Directory.GetDirectories(settings.SourceBankPath).Length == 0)
+                    if (Directory.GetDirectories(settings.SourceBankPathFull).Length == 0)
                     {
                         valid = false;
                         reason = "Build path doesn't contain any platform folders";
@@ -128,7 +102,7 @@ namespace FMODUnity
                 }
                 else
                 {
-                    if (Directory.GetFiles(settings.SourceBankPath, "*.strings.bank").Length == 0)
+                    if (Directory.GetFiles(settings.SourceBankPathFull, "*.strings.bank").Length == 0)
                     {
                         valid = false;
                         reason = "Build path doesn't contain the contents of an FMOD Studio Build";
@@ -140,11 +114,11 @@ namespace FMODUnity
 
         public static string[] GetBankPlatforms()
         {
-            string buildFolder = GetBankDirectory();
+            string buildFolder = Settings.Instance.SourceBankPathFull;
             try
             {
                 if (Directory.GetFiles(buildFolder, "*.bank").Length == 0)
-                {                
+                {
                     string[] buildDirectories = Directory.GetDirectories(buildFolder);
                     string[] buildNames = new string[buildDirectories.Length];
                     for (int i = 0; i < buildDirectories.Length; i++)

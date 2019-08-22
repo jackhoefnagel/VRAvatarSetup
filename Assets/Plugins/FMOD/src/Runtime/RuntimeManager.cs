@@ -494,7 +494,7 @@ retry:
 
         protected bool isOverlayEnabled = false;
         FMODRuntimeManagerOnGUIHelper overlayDrawer = null;
-        Rect windowRect = new Rect(10, 10, 300, 100);
+        Rect windowRect = new Rect(Screen.width-300, Screen.height-100, 300, 100);
 
         public void ExecuteOnGUI()
         {
@@ -1163,13 +1163,23 @@ retry:
             #elif UNITY_SWITCH && !UNITY_EDITOR
             FMOD.Switch.THREADAFFINITY affinity = new FMOD.Switch.THREADAFFINITY
             {
-                mixer = FMOD.Switch.THREAD.CORE2,
-                studioUpdate = FMOD.Switch.THREAD.CORE2,
-                studioLoadBank = FMOD.Switch.THREAD.CORE2,
-                studioLoadSample = FMOD.Switch.THREAD.CORE2
+                mixer = FMOD.Switch.THREAD.DEFAULT,
+                studioUpdate = FMOD.Switch.THREAD.DEFAULT,
+                studioLoadBank = FMOD.Switch.THREAD.DEFAULT,
+                studioLoadSample = FMOD.Switch.THREAD.DEFAULT
             };
             FMOD.RESULT result = FMOD.Switch.setThreadAffinity(ref affinity);
             CheckInitResult(result, "FMOD.Switch.setThreadAffinity");
+            #elif UNITY_ANDROID && !UNITY_EDITOR
+            FMOD.Android.THREADAFFINITY affinity = new FMOD.Android.THREADAFFINITY
+            {
+                mixer = FMOD.Android.THREAD.DEFAULT,
+                studioUpdate = FMOD.Android.THREAD.DEFAULT,
+                studioLoadBank = FMOD.Android.THREAD.DEFAULT,
+                studioLoadSample = FMOD.Android.THREAD.DEFAULT
+            };
+            FMOD.RESULT result = FMOD.Android.setThreadAffinity(ref affinity);
+            CheckInitResult(result, "FMOD.Android.setThreadAffinity");
             #endif
         }
 

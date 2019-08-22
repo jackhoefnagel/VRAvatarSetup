@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using FMOD;
+using FMODUnity;
+using System;
 
 public class FMODunityHandler : MonoBehaviour
 {
@@ -44,6 +46,8 @@ public class FMODunityHandler : MonoBehaviour
 
     private void OnEnable()
     {
+
+
         avatarAnimationEventsHandler.footstep.AddListener(DoFootstep);
         avatarAnimationEventsHandler.footscuff.AddListener(DoFootscuff);
         avatarAnimationEventsHandler.clothingrustleStart.AddListener(DoClothingRustleStart);
@@ -102,9 +106,11 @@ public class FMODunityHandler : MonoBehaviour
 
     void DoClothingRustleStart()
     {
-        fmod_clothingrustleEvent.setParameterByName("ClothingSpeed", Random.Range(0.1f, 0.9f));
+        Set3DAttributes(fmod_clothingrustleEvent, clothingrustleEventEmitter);
+        fmod_clothingrustleEvent.setParameterByName("ClothingSpeed", UnityEngine.Random.Range(0.1f, 0.9f));
         fmod_clothingrustleEvent.start();
     }
+
 
     void DoClothingRustleStop()
     {
@@ -113,11 +119,20 @@ public class FMODunityHandler : MonoBehaviour
 
     void DoSitStart()
     {
+        Set3DAttributes(fmod_sittingEvent, sittingEventEmitter);
         fmod_sittingEvent.start();
     }
 
     void DoStandStart()
     {
+        Set3DAttributes(fmod_standingEvent, standingEventEmitter);
         fmod_standingEvent.start();
+    }
+
+
+    private void Set3DAttributes(FMOD.Studio.EventInstance instanceToSet, FMODUnity.StudioEventEmitter emitterToSet)
+    {
+        ATTRIBUTES_3D attr_3D = FMODUnity.RuntimeUtils.To3DAttributes(emitterToSet.gameObject);
+        instanceToSet.set3DAttributes(attr_3D);
     }
 }

@@ -114,6 +114,16 @@ namespace FMODUnity
 
     public static class RuntimeUtils
     {
+        public static string GetCommonPlatformPath(string path)
+        {
+            if (string.IsNullOrEmpty(path))
+            {
+                return path;
+            }
+
+            return path.Replace('\\', '/');
+        }
+
         public static FMOD.VECTOR ToFMODVector(this Vector3 vec)
         {
             FMOD.VECTOR temp;
@@ -305,7 +315,7 @@ namespace FMODUnity
         {
             #if UNITY_EDITOR
             // For play in editor use original asset location because streaming asset folder will contain platform specific banks
-            string bankFolder = Settings.Instance.SourceBankPath;
+            string bankFolder = Settings.Instance.SourceBankPathFull;
             if (Settings.Instance.HasPlatforms)
             {
                 bankFolder = global::System.IO.Path.Combine(bankFolder, Settings.Instance.GetBankPlatform(FMODPlatform.PlayInEditor));

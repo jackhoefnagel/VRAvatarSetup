@@ -144,44 +144,48 @@ namespace FMODUnity
         [SerializeField]
         private string sourceProjectPath;
 
-        public string SourceProjectPath
+        public string SourceProjectPathRelative
         {
             get
             {
-                if (string.IsNullOrEmpty(sourceProjectPath) && !string.IsNullOrEmpty(SourceProjectPathUnformatted))
-                {
-                    sourceProjectPath = GetPlatformSpecificPath(SourceProjectPathUnformatted);
-                }
                 return sourceProjectPath;
             }
             set
             {
-                sourceProjectPath = GetPlatformSpecificPath(value);
+                sourceProjectPath = RuntimeUtils.GetCommonPlatformPath(value);
             }
         }
 
-        [SerializeField]
-        public string SourceProjectPathUnformatted;
-
-        private string sourceBankPath;
-        public string SourceBankPath
+        public string SourceProjectPathFull
         {
             get
             {
-                if (String.IsNullOrEmpty(sourceBankPath) && !String.IsNullOrEmpty(SourceBankPathUnformatted))
-                {
-                    sourceBankPath = GetPlatformSpecificPath(SourceBankPathUnformatted);
-                }
-                return sourceBankPath;
-            }
-            set
-            {
-            	sourceBankPath = GetPlatformSpecificPath(value);
+                return string.IsNullOrEmpty(sourceProjectPath) ? "" : Path.GetFullPath(sourceProjectPath);
             }
         }
 
         [SerializeField]
-        public string SourceBankPathUnformatted;
+        private string SourceBankPathUnformatted;
+
+        public string SourceBankPathRelative
+        {
+            get
+            {
+                return SourceBankPathUnformatted;
+            }
+            set
+            {
+                SourceBankPathUnformatted = RuntimeUtils.GetCommonPlatformPath(value);
+            }
+        }
+
+        public string SourceBankPathFull
+        {
+            get
+            {
+                return string.IsNullOrEmpty(SourceBankPathUnformatted) ? "" : Path.GetFullPath(SourceBankPathUnformatted);
+            }
+        }
 
         [SerializeField]
         public bool AutomaticEventLoading;
@@ -194,7 +198,7 @@ namespace FMODUnity
 
         [SerializeField]
         public string EncryptionKey;
-        
+
         [SerializeField]
         public ImportType ImportType;
 
@@ -350,7 +354,7 @@ namespace FMODUnity
         {
             #if UNITY_EDITOR
             if (platform == FMODPlatform.PlayInEditor)
-            { 
+            {
                 return GetSetting(SpeakerModeSettings, platform, GetSetting(SpeakerModeSettings, RuntimeUtils.GetEditorFMODPlatform(), (int)FMOD.SPEAKERMODE.STEREO));
             }
             else
@@ -396,7 +400,7 @@ namespace FMODUnity
             SampleRateSettings = new List<PlatformIntSetting>();
             SpeakerModeSettings = new List<PlatformIntSetting>();
             BankDirectorySettings = new List<PlatformStringSetting>();
-            
+
             // Default play in editor settings
             SetSetting(LoggingSettings, FMODPlatform.PlayInEditor, TriStateBool.Enabled);
             SetSetting(LiveUpdateSettings, FMODPlatform.PlayInEditor, TriStateBool.Enabled);
@@ -414,7 +418,7 @@ namespace FMODUnity
             SetSetting(RealChannelSettings, FMODPlatform.Default, 32); // Match the default in the low level
             SetSetting(VirtualChannelSettings, FMODPlatform.Default, 128);
             SetSetting(SampleRateSettings, FMODPlatform.Default, 0);
-            SetSetting(SpeakerModeSettings, FMODPlatform.Default, (int) FMOD.SPEAKERMODE.STEREO);
+            SetSetting(SpeakerModeSettings, FMODPlatform.Default, (int)FMOD.SPEAKERMODE.STEREO);
 
             ImportType = ImportType.StreamingAssets;
             AutomaticEventLoading = true;
@@ -437,20 +441,10 @@ namespace FMODUnity
                 SetSetting(SpeakerModeSettings, FMODPlatform.Switch, GetSetting(SpeakerModeSettings, FMODPlatform.Mobile, (int)FMOD.SPEAKERMODE.STEREO));
                 SwitchSettingsMigration = true;
             }
-        }
 
-        private string GetPlatformSpecificPath(string path)
-        {
-            if (string.IsNullOrEmpty(path))
-            {
-                return path;
-            }
-
-            if (Path.DirectorySeparatorChar == '/')
-            {
-                return path.Replace('\\', '/');
-            }
-            return path.Replace('/', '\\');
+            // Fix up slashes for old settings meta data.
+            sourceProjectPath = RuntimeUtils.GetCommonPlatformPath(sourceProjectPath);
+            SourceBankPathUnformatted = RuntimeUtils.GetCommonPlatformPath(SourceBankPathUnformatted);
         }
     }
 }
