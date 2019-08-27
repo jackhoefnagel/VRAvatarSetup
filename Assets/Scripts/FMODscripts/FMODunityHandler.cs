@@ -115,7 +115,7 @@ public class FMODunityHandler : MonoBehaviour
 
     void DoClothingRustleStop()
     {
-        fmod_clothingrustleEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        fmod_clothingrustleEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
 
     void DoSitStart()
