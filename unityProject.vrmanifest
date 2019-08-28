@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.vraggresiontrainingunityproject.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\Users\\Systeembeheer\\Documents\\VRAggresionTrainingUnityProject\\actions.json",
+      "action_manifest_path": "E:\\projecten\\forClients\\2019\\q3\\driftwoodAudio\\VRAvatarSetup\\VRAvatarSetup\\actions.json",
       "strings": {
         "en_us": {
           "name": "VRAggresionTrainingUnityProject [Testing]"
