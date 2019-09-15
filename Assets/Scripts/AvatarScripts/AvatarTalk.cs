@@ -20,7 +20,7 @@ public class AvatarTalk : MonoBehaviour
     public string micName;
 
     public float[] waveData;
-    private int samples = 999;
+    private int samples = 10;
     public float micVolumeEaseDownSpeed = 1f;
 
     private void Start()
@@ -98,18 +98,37 @@ public class AvatarTalk : MonoBehaviour
         micName = newMicName;
     }
 
+    private IEnumerator RepeatMicEnable()
+    {
+        while (true)
+        {
+        
+            microphoneInput = Microphone.Start(micName, true, samples, 44100);
+            microphonePlayback.clip = microphoneInput;
+            while (!(Microphone.GetPosition(micName) > 0)) { }
+            microphonePlayback.Play();
+
+            micEnabled = Microphone.IsRecording(micName);
+
+            yield return new WaitForSeconds(7f);
+
+            Microphone.End(micName);
+        }
+
+
+
+    }
+
     public void StartMicrophone()
     {
-        microphoneInput = Microphone.Start(micName, true, samples, 44100);
-        microphonePlayback.clip = microphoneInput;
-        while(!(Microphone.GetPosition(micName) > 0)) { }
-        microphonePlayback.Play();
+        StartCoroutine("RepeatMicEnable");
 
-        micEnabled = Microphone.IsRecording(micName);
+
     }
 
     public void StopMicrophone()
     {
+        StopCoroutine("RepeatMicEnable");
         Microphone.End(micName);
     }
 }
