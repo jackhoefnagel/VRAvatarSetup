@@ -392,6 +392,7 @@ namespace FMODUnity
         {
             MasterBanks = new List<string>();
             Banks = new List<string>();
+            BanksToLoad = new List<string>();
             RealChannelSettings = new List<PlatformIntSetting>();
             VirtualChannelSettings = new List<PlatformIntSetting>();
             LoggingSettings = new List<PlatformBoolSetting>();

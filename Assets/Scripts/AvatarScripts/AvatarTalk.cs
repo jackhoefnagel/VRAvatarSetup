@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AvatarTalk : MonoBehaviour
 {
+    public UnityMicrophone unityMicScript;
     public Animator animator;
 
     public float talkVolume = 1f;
@@ -25,7 +26,7 @@ public class AvatarTalk : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine("MicVolumeEaseDown");
+        //StartCoroutine("MicVolumeEaseDown");
     }
 
     private IEnumerator MicVolumeEaseDown()
@@ -95,21 +96,26 @@ public class AvatarTalk : MonoBehaviour
 
     public void SetMic(string newMicName)
     {
+        unityMicScript.ChangeAudioDevice(newMicName);
         micName = newMicName;
     }
 
     public void StartMicrophone()
     {
+        unityMicScript.Button_Click();
+        /*
         microphoneInput = Microphone.Start(micName, true, samples, 44100);
         microphonePlayback.clip = microphoneInput;
         while(!(Microphone.GetPosition(micName) > 0)) { }
         microphonePlayback.Play();
 
         micEnabled = Microphone.IsRecording(micName);
+        */      
     }
 
     public void StopMicrophone()
     {
-        Microphone.End(micName);
+        unityMicScript.Button_Click();
+        //Microphone.End(micName);
     }
 }

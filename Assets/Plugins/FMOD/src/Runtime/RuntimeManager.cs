@@ -460,23 +460,33 @@ retry:
 
         public static void AttachInstanceToGameObject(FMOD.Studio.EventInstance instance, Transform transform, Rigidbody rigidBody)
         {
+            AttachedInstance attachedInstance = Instance.attachedInstances.Find(x => x.instance.handle == instance.handle);
+            if (attachedInstance == null)
+            {
+                attachedInstance = new AttachedInstance();
+                Instance.attachedInstances.Add(attachedInstance);
+            }
+
             instance.set3DAttributes(RuntimeUtils.To3DAttributes(transform, rigidBody));
-            var attachedInstance = new AttachedInstance();
             attachedInstance.transform = transform;
             attachedInstance.instance = instance;
             attachedInstance.rigidBody = rigidBody;
-            Instance.attachedInstances.Add(attachedInstance);
         }
 
         public static void AttachInstanceToGameObject(FMOD.Studio.EventInstance instance, Transform transform, Rigidbody2D rigidBody2D)
         {
+            AttachedInstance attachedInstance = Instance.attachedInstances.Find(x => x.instance.handle == instance.handle);
+            if (attachedInstance == null)
+            {
+                attachedInstance = new AttachedInstance();
+                Instance.attachedInstances.Add(attachedInstance);
+            }
+
             instance.set3DAttributes(RuntimeUtils.To3DAttributes(transform, rigidBody2D));
-            var attachedInstance = new AttachedInstance();
             attachedInstance.transform = transform;
             attachedInstance.instance = instance;
             attachedInstance.rigidBody2D = rigidBody2D;
             attachedInstance.rigidBody = null;
-            Instance.attachedInstances.Add(attachedInstance);
         }
 
         public static void DetachInstanceFromGameObject(FMOD.Studio.EventInstance instance)
