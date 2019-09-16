@@ -130,7 +130,7 @@ public class UnityMicrophone : MonoBehaviour
         }
     }
  
-    private void Start()
+    private void Awake()
     {
         LoadMicrophoneDevices();
         SetupGlobalAudio();
