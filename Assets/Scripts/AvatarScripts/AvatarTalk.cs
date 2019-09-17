@@ -20,13 +20,13 @@ public class AvatarTalk : MonoBehaviour
     public bool micEnabled = false;
     public string micName;
 
-    public float[] waveData;
-    private int samples = 999;
+    private float[] waveData;
+    private int samples = 128;
     public float micVolumeEaseDownSpeed = 1f;
 
     private void Start()
     {
-        //StartCoroutine("MicVolumeEaseDown");
+        StartCoroutine("MicVolumeEaseDown");
     }
 
     private IEnumerator MicVolumeEaseDown()
@@ -40,6 +40,7 @@ public class AvatarTalk : MonoBehaviour
             if (micEnabled)
             {
                 newMicVolume = LevelMax();
+
                 if (newMicVolume > talkVolume)
                 {
                     setMicVolume = newMicVolume;
@@ -74,6 +75,13 @@ public class AvatarTalk : MonoBehaviour
         }
         else
         {
+            if (microphoneInput == null)
+            {
+                if (microphonePlayback.clip != null)
+                {
+                    microphoneInput = microphonePlayback.clip;
+                }
+            }
             float levelMax = 0;
             waveData = new float[samples];
             int micPosition = Microphone.GetPosition(micName) - (samples + 1);
@@ -102,7 +110,9 @@ public class AvatarTalk : MonoBehaviour
 
     public void StartMicrophone()
     {
+        microphoneInput = microphonePlayback.clip;
         unityMicScript.Button_Click();
+        micEnabled = true;
         /*
         microphoneInput = Microphone.Start(micName, true, samples, 44100);
         microphonePlayback.clip = microphoneInput;
@@ -110,12 +120,14 @@ public class AvatarTalk : MonoBehaviour
         microphonePlayback.Play();
 
         micEnabled = Microphone.IsRecording(micName);
-        */      
+        */
     }
 
     public void StopMicrophone()
     {
         unityMicScript.Button_Click();
+        micEnabled = false;
+        microphoneInput = null;
         //Microphone.End(micName);
     }
 }

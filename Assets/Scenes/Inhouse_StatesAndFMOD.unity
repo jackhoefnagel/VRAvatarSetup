@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1791827370}
-  m_IndirectSpecularColor: {r: 0.180285, g: 0.22571534, b: 0.3069244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028492, g: 0.2257151, b: 0.3069239, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1126,6 +1126,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1132880627, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: avatarAnimController
+      value: 
+      objectReference: {fileID: 951231367}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.52
@@ -1174,10 +1178,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1132880627, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
-      propertyPath: avatarAnimController
-      value: 
-      objectReference: {fileID: 951231367}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
 --- !u!4 &920387591 stripped
@@ -1309,14 +1309,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 91758021, guid: f79087b7229914586962f42983b543d3, type: 3}
-      propertyPath: OverrideMaxDistance
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1149724391, guid: f79087b7229914586962f42983b543d3, type: 3}
-      propertyPath: OverrideMinDistance
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1149724391, guid: f79087b7229914586962f42983b543d3, type: 3}
       propertyPath: OverrideMaxDistance
       value: 0
       objectReference: {fileID: 0}
@@ -1804,6 +1796,24 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 37.275616
       objectReference: {fileID: 0}
+    - target: {fileID: 1716665849996939503, guid: f79087b7229914586962f42983b543d3,
+        type: 3}
+      propertyPath: destination
+      value: 
+      objectReference: {fileID: 1009281594}
+    - target: {fileID: 1716665848790364539, guid: f79087b7229914586962f42983b543d3,
+        type: 3}
+      propertyPath: unityMicScript
+      value: 
+      objectReference: {fileID: 2076319874}
+    - target: {fileID: 1149724391, guid: f79087b7229914586962f42983b543d3, type: 3}
+      propertyPath: OverrideMinDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1149724391, guid: f79087b7229914586962f42983b543d3, type: 3}
+      propertyPath: OverrideMaxDistance
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1716665850223726894, guid: f79087b7229914586962f42983b543d3,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -1823,11 +1833,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1716665849996939503, guid: f79087b7229914586962f42983b543d3,
-        type: 3}
-      propertyPath: destination
-      value: 
-      objectReference: {fileID: 1009281594}
     - target: {fileID: 1716665850220904854, guid: f79087b7229914586962f42983b543d3,
         type: 3}
       propertyPath: m_DynamicOccludee
@@ -4402,6 +4407,35 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 428928, guid: 73ac470d3d909d645a6c89a4664b6849,
     type: 3}
   m_PrefabInstance: {fileID: 1673094406}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2076319873 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1716665848790364532, guid: f79087b7229914586962f42983b543d3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1051808126}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2076319874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076319873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cdde18c7c2cd44b0b791964de33b768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  micAudioSource: {fileID: 2076319875}
+  micRecordLength: 1
+  latencyBuffer: 0.001
+  Dsp_Buffer_Size: 256
+  selectedDevice: 0
+--- !u!82 &2076319875 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1716665848790364537, guid: f79087b7229914586962f42983b543d3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1051808126}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2142234805 stripped
 Transform:

@@ -873,6 +873,11 @@ PrefabInstance:
       propertyPath: unityMicScript
       value: 
       objectReference: {fileID: 1992662996}
+    - target: {fileID: 1716665848790364539, guid: f79087b7229914586962f42983b543d3,
+        type: 3}
+      propertyPath: talkVolume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1716665848790364537, guid: f79087b7229914586962f42983b543d3,
         type: 3}
       propertyPath: m_Enabled
