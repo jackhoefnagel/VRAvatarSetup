@@ -25,9 +25,9 @@ public class UnityMicrophone : MonoBehaviour
     void SetupAudioSource()
     {
         //bypass to try and speed things up
-        micAudioSource.bypassEffects = true;
-        micAudioSource.bypassListenerEffects = true;
-        micAudioSource.bypassReverbZones = true;
+        micAudioSource.bypassEffects = false;
+        micAudioSource.bypassListenerEffects = false;
+        micAudioSource.bypassReverbZones = false;
         micAudioSource.priority = 0;
         micAudioSource.pitch = 1;
     }
