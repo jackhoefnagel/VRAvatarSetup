@@ -1126,10 +1126,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1132880627, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
-      propertyPath: avatarAnimController
-      value: 
-      objectReference: {fileID: 951231367}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.52
@@ -1175,6 +1171,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 496744, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132880627, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: avatarAnimController
+      value: 
+      objectReference: {fileID: 951231367}
+    - target: {fileID: 476076, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 476540, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 485514, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -1309,6 +1321,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 91758021, guid: f79087b7229914586962f42983b543d3, type: 3}
+      propertyPath: OverrideMaxDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1149724391, guid: f79087b7229914586962f42983b543d3, type: 3}
+      propertyPath: OverrideMinDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1149724391, guid: f79087b7229914586962f42983b543d3, type: 3}
       propertyPath: OverrideMaxDistance
       value: 0
       objectReference: {fileID: 0}
@@ -1796,24 +1816,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 37.275616
       objectReference: {fileID: 0}
-    - target: {fileID: 1716665849996939503, guid: f79087b7229914586962f42983b543d3,
-        type: 3}
-      propertyPath: destination
-      value: 
-      objectReference: {fileID: 1009281594}
-    - target: {fileID: 1716665848790364539, guid: f79087b7229914586962f42983b543d3,
-        type: 3}
-      propertyPath: unityMicScript
-      value: 
-      objectReference: {fileID: 2076319874}
-    - target: {fileID: 1149724391, guid: f79087b7229914586962f42983b543d3, type: 3}
-      propertyPath: OverrideMinDistance
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1149724391, guid: f79087b7229914586962f42983b543d3, type: 3}
-      propertyPath: OverrideMaxDistance
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1716665850223726894, guid: f79087b7229914586962f42983b543d3,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -1833,6 +1835,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1716665849996939503, guid: f79087b7229914586962f42983b543d3,
+        type: 3}
+      propertyPath: destination
+      value: 
+      objectReference: {fileID: 1009281594}
     - target: {fileID: 1716665850220904854, guid: f79087b7229914586962f42983b543d3,
         type: 3}
       propertyPath: m_DynamicOccludee
@@ -1868,6 +1875,11 @@ PrefabInstance:
       propertyPath: m_DynamicOccludee
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1716665848790364539, guid: f79087b7229914586962f42983b543d3,
+        type: 3}
+      propertyPath: unityMicScript
+      value: 
+      objectReference: {fileID: 2076319874}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f79087b7229914586962f42983b543d3, type: 3}
 --- !u!1 &1058510587
