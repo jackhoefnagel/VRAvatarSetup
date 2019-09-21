@@ -133,7 +133,7 @@ public class UnityMicrophone : MonoBehaviour
     private void Awake()
     {
         LoadMicrophoneDevices();
-        SetupGlobalAudio();
+        //SetupGlobalAudio();
         SetupAudioSource();
     }
  
