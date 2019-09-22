@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 8900000, guid: f084d048e2acec748aca5f2b0a07ae06, type: 3}
   m_Sun: {fileID: 148016448}
-  m_IndirectSpecularColor: {r: 0.21983542, g: 0.24629834, b: 0.28863308, a: 1}
+  m_IndirectSpecularColor: {r: 0.21983552, g: 0.24629857, b: 0.28863326, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1096,6 +1096,16 @@ PrefabInstance:
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1716665848961704669, guid: f79087b7229914586962f42983b543d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.399414
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716665850447473053, guid: f79087b7229914586962f42983b543d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.50000095
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7314781105892990018, guid: f79087b7229914586962f42983b543d3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f79087b7229914586962f42983b543d3, type: 3}
@@ -1466,13 +1476,37 @@ GameObject:
   m_Component:
   - component: {fileID: 1188021137}
   - component: {fileID: 1188021138}
+  - component: {fileID: 1188021136}
   m_Layer: 0
   m_Name: Reverb_Probe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
+--- !u!114 &1188021136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188021135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7929fa5e730414cb1f18134aef71c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftWall: 16
+  rightWall: 16
+  floor: 11
+  ceiling: 1
+  backWall: 16
+  frontWall: 16
+  reflectivity: 1
+  reverbGainDb: -18.7
+  reverbBrightness: 0
+  reverbTime: 1.34
+  size: {x: 5, y: 5, z: 5}
 --- !u!4 &1188021137
 Transform:
   m_ObjectHideFlags: 0
