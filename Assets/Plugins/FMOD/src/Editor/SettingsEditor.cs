@@ -625,11 +625,11 @@ namespace FMODUnity
                             {
                                 platform = FMODPlatform.PlayInEditor;
                             }
-                            string sourceDir = RuntimeUtils.GetCommonPlatformPath(settings.SourceBankPathFull + '/' + (settings.HasSourceProject ? settings.GetBankPlatform(platform) + '/' : ""));
-                            var banksFound = new List<string>(Directory.GetFiles(sourceDir, "*.bank", SearchOption.AllDirectories));
+                            var banksFound = new List<string>(Directory.GetFiles(settings.SourceBankPathFull, "*.bank", SearchOption.AllDirectories));
                             for (int i = 0; i < banksFound.Count; i++)
                             {
-                                string bankShortName = RuntimeUtils.GetCommonPlatformPath(Path.GetFullPath(banksFound[i])).Replace(sourceDir, "");
+                                string sourceDir = settings.SourceBankPathFull + '/' + (settings.HasSourceProject ? settings.GetBankPlatform(platform) + '/' : "");
+                                string bankShortName = Path.GetFullPath(banksFound[i]).Replace(sourceDir, "");
                                 if (!settings.BanksToLoad.Contains(bankShortName))
                                 {
                                     settings.BanksToLoad.Add(bankShortName);

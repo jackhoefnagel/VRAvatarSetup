@@ -500,7 +500,7 @@ namespace FMODUnity
             string bankTargetFolder =
                 Settings.Instance.ImportType == ImportType.StreamingAssets
                 ? Application.dataPath + "/StreamingAssets"
-                : Application.dataPath + (string.IsNullOrEmpty(Settings.Instance.TargetAssetPath) ? "" : '/' + Settings.Instance.TargetAssetPath);
+                : Application.dataPath + '/' + Settings.Instance.TargetAssetPath;
             bankTargetFolder = RuntimeUtils.GetCommonPlatformPath(bankTargetFolder);
             Directory.CreateDirectory(bankTargetFolder);
 
@@ -530,8 +530,8 @@ namespace FMODUnity
                 List<string> directories = new List<string>();
                 foreach (var bankFileName in currentBankFiles)
                 {
-                    var targetShortName = RuntimeUtils.GetCommonPlatformPath(bankFileName).Replace(bankTargetFolder + '/', "");
-                    if (!eventCache.EditorBanks.Exists((x) => targetShortName == x.Name + "." + bankTargetExension))
+                    var targetShortName = RuntimeUtils.GetCommonPlatformPath(bankFileName).Replace(RuntimeUtils.GetCommonPlatformPath(Application.streamingAssetsPath + '/'), "");
+                    if (!eventCache.EditorBanks.Exists((x) => targetShortName == x.Name + "." + BankExtension))
                     {
                         File.Delete(bankFileName);
                         madeChanges = true;

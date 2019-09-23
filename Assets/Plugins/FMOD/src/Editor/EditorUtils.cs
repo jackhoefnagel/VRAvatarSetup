@@ -444,7 +444,7 @@ namespace FMODUnity
         }
 
         static List<FMOD.Studio.Bank> masterBanks = new List<FMOD.Studio.Bank>();
-        static List<FMOD.Studio.Bank> previewBanks = new List<FMOD.Studio.Bank>();
+        static FMOD.Studio.Bank previewBank;
         static FMOD.Studio.EventDescription previewEventDesc;
         static FMOD.Studio.EventInstance previewEventInstance;
 
@@ -474,7 +474,6 @@ namespace FMODUnity
             if (load)
             {
                 masterBanks.Clear();
-                previewBanks.Clear();
 
                 foreach (EditorBankRef masterBankRef in EventManager.MasterBanks)
                 {
@@ -485,21 +484,11 @@ namespace FMODUnity
 
                 if (!EventManager.MasterBanks.Exists(x => eventRef.Banks.Contains(x)))
                 {
-                    string bankName = eventRef.Banks[0].Name;
-                    var banks = EventManager.Banks.FindAll(x => x.Name.Contains(bankName));
-                    foreach (var bank in banks)
-                    {
-                        FMOD.Studio.Bank previewBank;
-                        CheckResult(System.loadBankFile(bank.Path, FMOD.Studio.LOAD_BANK_FLAGS.NORMAL, out previewBank));
-                        previewBanks.Add(previewBank);
-                    }
+                    CheckResult(System.loadBankFile(eventRef.Banks[0].Path, FMOD.Studio.LOAD_BANK_FLAGS.NORMAL, out previewBank));
                 }
                 else
                 {
-                    foreach (var previewBank in previewBanks)
-                    {
-                        previewBank.clearHandle();
-                    }
+                    previewBank.clearHandle();
                 }
 
                 CheckResult(System.getEventByID(eventRef.Guid, out previewEventDesc));
@@ -559,8 +548,12 @@ namespace FMODUnity
                 previewEventInstance.release();
                 previewEventInstance.clearHandle();
                 previewEventDesc.clearHandle();
-                previewBanks.ForEach(x => { x.unload(); x.clearHandle(); });
+                if (previewBank.isValid())
+                {
+                    previewBank.unload();
+                }
                 masterBanks.ForEach(x => { x.unload(); x.clearHandle(); });
+                previewBank.clearHandle();
                 previewState = PreviewState.Stopped;
             }
         }

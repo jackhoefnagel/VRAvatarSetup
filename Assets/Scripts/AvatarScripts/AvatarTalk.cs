@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AvatarTalk : MonoBehaviour
 {
-    public UnityMicrophone unityMicScript;
     public Animator animator;
 
     public float talkVolume = 1f;
@@ -20,8 +19,8 @@ public class AvatarTalk : MonoBehaviour
     public bool micEnabled = false;
     public string micName;
 
-    private float[] waveData;
-    private int samples = 128;
+    public float[] waveData;
+    private int samples = 10;
     public float micVolumeEaseDownSpeed = 1f;
 
     private void Start()
@@ -40,7 +39,6 @@ public class AvatarTalk : MonoBehaviour
             if (micEnabled)
             {
                 newMicVolume = LevelMax();
-
                 if (newMicVolume > talkVolume)
                 {
                     setMicVolume = newMicVolume;
@@ -75,13 +73,6 @@ public class AvatarTalk : MonoBehaviour
         }
         else
         {
-            if (microphoneInput == null)
-            {
-                if (microphonePlayback.clip != null)
-                {
-                    microphoneInput = microphonePlayback.clip;
-                }
-            }
             float levelMax = 0;
             waveData = new float[samples];
             int micPosition = Microphone.GetPosition(micName) - (samples + 1);
@@ -104,30 +95,40 @@ public class AvatarTalk : MonoBehaviour
 
     public void SetMic(string newMicName)
     {
-        unityMicScript.ChangeAudioDevice(newMicName);
         micName = newMicName;
+    }
+
+    private IEnumerator RepeatMicEnable()
+    {
+        while (true)
+        {
+        
+            microphoneInput = Microphone.Start(micName, true, samples, 44100);
+            microphonePlayback.clip = microphoneInput;
+            while (!(Microphone.GetPosition(micName) > 0)) { }
+            microphonePlayback.Play();
+
+            micEnabled = Microphone.IsRecording(micName);
+
+            yield return new WaitForSeconds(7f);
+
+            Microphone.End(micName);
+        }
+
+
+
     }
 
     public void StartMicrophone()
     {
-        microphoneInput = microphonePlayback.clip;
-        unityMicScript.Button_Click();
-        micEnabled = true;
-        /*
-        microphoneInput = Microphone.Start(micName, true, samples, 44100);
-        microphonePlayback.clip = microphoneInput;
-        while(!(Microphone.GetPosition(micName) > 0)) { }
-        microphonePlayback.Play();
+        StartCoroutine("RepeatMicEnable");
 
-        micEnabled = Microphone.IsRecording(micName);
-        */
+
     }
 
     public void StopMicrophone()
     {
-        unityMicScript.Button_Click();
-        micEnabled = false;
-        microphoneInput = null;
-        //Microphone.End(micName);
+        StopCoroutine("RepeatMicEnable");
+        Microphone.End(micName);
     }
 }
