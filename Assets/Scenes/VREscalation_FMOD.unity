@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 8900000, guid: f084d048e2acec748aca5f2b0a07ae06, type: 3}
   m_Sun: {fileID: 148016448}
-  m_IndirectSpecularColor: {r: 0.21983542, g: 0.24629834, b: 0.28863308, a: 1}
+  m_IndirectSpecularColor: {r: 0.21983579, g: 0.24629875, b: 0.28863364, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -868,6 +868,11 @@ PrefabInstance:
       propertyPath: destination
       value: 
       objectReference: {fileID: 1666636649}
+    - target: {fileID: 1716665849267219207, guid: f79087b7229914586962f42983b543d3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 112261432, guid: f79087b7229914586962f42983b543d3, type: 3}
       propertyPath: objectScriptEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -887,10 +892,9 @@ PrefabInstance:
       propertyPath: eyesLookWeight
       value: 0.303
       objectReference: {fileID: 0}
-    - target: {fileID: 1716665849267219207, guid: f79087b7229914586962f42983b543d3,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
+    - target: {fileID: 1992662996, guid: f79087b7229914586962f42983b543d3, type: 3}
+      propertyPath: latencyBuffer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 506285353, guid: f79087b7229914586962f42983b543d3, type: 3}
       propertyPath: directivityAlpha
