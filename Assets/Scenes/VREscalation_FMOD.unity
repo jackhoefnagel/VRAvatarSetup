@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 8900000, guid: f084d048e2acec748aca5f2b0a07ae06, type: 3}
   m_Sun: {fileID: 148016448}
-  m_IndirectSpecularColor: {r: 0.21983542, g: 0.24629834, b: 0.28863308, a: 1}
+  m_IndirectSpecularColor: {r: 0.21983579, g: 0.24629875, b: 0.28863364, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -393,9 +393,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 0.1
-  MaxDistance: 3
+  MaxDistance: 6
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -412,8 +412,17 @@ AudioSource:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
+      time: 0.18316436
+      value: 0.43146318
+      inSlope: -1.17681
+      outSlope: -1.17681
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 1
-      value: 0
+      value: 0.06666565
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1104,7 +1113,7 @@ PrefabInstance:
     - target: {fileID: 1716665850447473053, guid: f79087b7229914586962f42983b543d3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.50000095
+      value: -0.5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7314781105892990018, guid: f79087b7229914586962f42983b543d3, type: 3}
