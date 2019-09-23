@@ -894,7 +894,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1992662996, guid: f79087b7229914586962f42983b543d3, type: 3}
       propertyPath: latencyBuffer
-      value: 2
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 506285353, guid: f79087b7229914586962f42983b543d3, type: 3}
       propertyPath: directivityAlpha
